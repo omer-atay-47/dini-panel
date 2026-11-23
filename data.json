@@ -1,0 +1,333 @@
+{
+ "seri": "Bunu biliyor muydunuz?",
+ "videolar": [
+  {
+   "id": "meryem",
+   "baslik": "Kur'an'da adı geçen tek kadın",
+   "kanca": "Kur'an'da adı geçen tek kadın kim?",
+   "dosya": "videos/meryem.mp4",
+   "kapak": "videos/meryem.jpg",
+   "sure": "42,6 sn",
+   "aciklama": "Meryem'in adı Kur'an'da 34 yerde geçer. Kur'an'da ismiyle anılan tek kadındır; bir sûreye de adı verilmiştir.",
+   "etiketler": [
+    "#kuran",
+    "#meryem",
+    "#bunubiliyormuydunuz",
+    "#dinibilgiler"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Âl-i İmrân 3:42",
+     "not": "Melekler: Allah seni seçip temizledi, dünya kadınlarına üstün kıldı."
+    },
+    {
+     "ref": "Âl-i İmrân 3:37",
+     "not": "Zekeriyya mihrapta her girişinde yanında rızık bulurdu."
+    },
+    {
+     "ref": "Tahrîm 66:12",
+     "not": "İmran kızı Meryem örnek gösterilir."
+    },
+    {
+     "ref": "Mü'minûn 23:50",
+     "not": "Meryem oğlu ve annesi bir mucize kılındı."
+    },
+    {
+     "ref": "Meryem 19:16",
+     "not": "Doğu yönünde bir yere çekilmişti. 19. sûre."
+    },
+    {
+     "ref": "Âl-i İmrân 3:35",
+     "not": "İmran'ın karısı adaktan söz eder; adı verilmez."
+    }
+   ],
+   "kontrol": [
+    "Ayet metinleri Kur'an (Osmani) ile eşleşti",
+    "Mealler Diyanet mealiyle karşılaştırıldı",
+    "Meryem adı 34 yerde geçiyor (sayım yapıldı)",
+    "Zekeriyya/rızık cümlesi belirsizlik bırakmayacak şekilde düzeltildi",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ]
+  },
+  {
+   "id": "ramazan",
+   "baslik": "Kur'an'da adı geçen tek ay",
+   "kanca": "Kur'an'da adı geçen tek ay hangisi?",
+   "dosya": "videos/ramazan.mp4",
+   "kapak": "videos/ramazan.jpg",
+   "sure": "43 sn",
+   "aciklama": "Kur'an'da isim olarak yalnızca Ramazan ayı geçer (Bakara 2:185). Kur'an Ramazan'da indirildi; Kadir Gecesi bin aydan hayırlıdır.",
+   "etiketler": [
+    "#ramazan",
+    "#kadirgecesi",
+    "#kuran",
+    "#bunubiliyormuydunuz"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Bakara 2:185",
+     "not": "Ramazan ayı: Kur'an'ın indirildiği ay; orucun tutulması; Allah size kolaylık diler."
+    },
+    {
+     "ref": "Kadir 97:1",
+     "not": "Onu Kadir gecesinde indirdik."
+    },
+    {
+     "ref": "Kadir 97:3",
+     "not": "Kadir gecesi bin aydan hayırlıdır."
+    },
+    {
+     "ref": "Kadir 97:4",
+     "not": "Melekler ve Ruh iner."
+    },
+    {
+     "ref": "Kadir 97:5",
+     "not": "O gece selâmdır, fecrin doğuşuna kadar."
+    }
+   ],
+   "kontrol": [
+    "Ayet metinleri Kur'an (Osmani) ile eşleşti",
+    "Mealler Diyanet mealiyle karşılaştırıldı",
+    "Kur'an'da başka ay adı geçmediği doğrulandı",
+    "Ekrandaki '1000 ay ≈ 83 yıl' hesabı kontrol edildi (1000/12 ≈ 83,3)",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ]
+  },
+  {
+   "id": "muhammed",
+   "baslik": "Peygamberimizin adı Kur'an'da kaç kez geçer?",
+   "kanca": "Muhammed adı Kur'an'da kaç kez geçer?",
+   "sure": "40,4 sn",
+   "aciklama": "Muhammed adı Kur'an'da tam dört ayette geçer. Ayrıca Saf sûresinde 'Ahmed' adı anılır.",
+   "etiketler": [
+    "#kuran",
+    "#hzmuhammed",
+    "#bunubiliyormuydunuz",
+    "#dinibilgiler"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Âl-i İmrân 3:144",
+     "not": "Muhammed ancak bir peygamberdir."
+    },
+    {
+     "ref": "Ahzâb 33:40",
+     "not": "Allah'ın elçisi ve peygamberlerin sonuncusu."
+    },
+    {
+     "ref": "Muhammed 47:2",
+     "not": "Muhammed'e indirilene inananlar. Sûrenin adı da Muhammed."
+    },
+    {
+     "ref": "Fetih 48:29",
+     "not": "Muhammed Allah'ın elçisidir."
+    },
+    {
+     "ref": "Saf 61:6",
+     "not": "Hz. İsa, adı Ahmed olan elçiyi müjdeler. Âlimler bu ismi Peygamberimiz olarak yorumlar."
+    }
+   ],
+   "kontrol": [
+    "Ayet metinleri Kur'an (Osmani) ile eşleşti",
+    "Mealler Diyanet mealiyle karşılaştırıldı",
+    "Kur'an metninde 'Muhammed' tam 4 kez geçiyor (programla sayıldı)",
+    "'Ahmed' ayrı bir isim olarak sadece 61:6'da geçiyor (programla sayıldı)",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "dosya": "videos/muhammed.mp4",
+   "kapak": "videos/muhammed.jpg"
+  },
+  {
+   "id": "kehf",
+   "baslik": "Kehf ashabı kaç yıl uyudu?",
+   "kanca": "Kehf ashabı mağarada kaç yıl uyudu?",
+   "sure": "38,5 sn",
+   "aciklama": "Kehf ashabı mağarada üç yüz dokuz yıl kaldı (300 + 9). Süreyi en iyi Allah bilir.",
+   "etiketler": [
+    "#kehf",
+    "#kuran",
+    "#ashabikehf",
+    "#bunubiliyormuydunuz"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Kehf 18:13",
+     "not": "Rablerine inanmış birkaç genç."
+    },
+    {
+     "ref": "Kehf 18:18",
+     "not": "Uykudayken onları uyanık sanırdın."
+    },
+    {
+     "ref": "Kehf 18:19",
+     "not": "Uyandırıldılar; 'bir gün ya da günün bir kısmı' dediler."
+    },
+    {
+     "ref": "Kehf 18:25",
+     "not": "Üç yüz yıl ve dokuz yıl eklediler."
+    },
+    {
+     "ref": "Kehf 18:26",
+     "not": "Ne kadar kaldıklarını en iyi Allah bilir."
+    }
+   ],
+   "kontrol": [
+    "Ayet metinleri Kur'an (Osmani) ile eşleşti",
+    "Mealler Diyanet mealiyle karşılaştırıldı",
+    "309 sayısı ayetin kendisinden (300 + 9)",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "dosya": "videos/kehf.mp4",
+   "kapak": "videos/kehf.jpg"
+  },
+  {
+   "id": "fil",
+   "baslik": "Fil sahiplerine ne oldu?",
+   "kanca": "Fil sahiplerine ne oldu?",
+   "sure": "40,1 sn",
+   "aciklama": "Fîl sûresi beş ayettir: fil sahiplerinin planı boşa çıktı, üzerlerine sürü sürü kuşlar gönderildi.",
+   "etiketler": [
+    "#fil",
+    "#filsuresi",
+    "#kuran",
+    "#bunubiliyormuydunuz"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Fîl 105:1",
+     "not": "Rabbinin fil sahiplerine ne yaptığını görmedin mi?"
+    },
+    {
+     "ref": "Fîl 105:2",
+     "not": "Hilelerini boşa çıkarmadı mı?"
+    },
+    {
+     "ref": "Fîl 105:3",
+     "not": "Sürü sürü (ebâbîl) kuşlar gönderdi."
+    },
+    {
+     "ref": "Fîl 105:4",
+     "not": "Sert taşlar atıyorlardı."
+    },
+    {
+     "ref": "Fîl 105:5",
+     "not": "Onları yenilmiş ekin gibi yaptı."
+    }
+   ],
+   "kontrol": [
+    "Ayet metinleri Kur'an (Osmani) ile eşleşti",
+    "Mealler Diyanet mealiyle karşılaştırıldı",
+    "Sûrenin 5 ayet olduğu veriyle sayıldı",
+    "'Ebâbîl = sürü sürü' yorumu bir tefsirden kontrol edilmeli",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "dosya": "videos/fil.mp4",
+   "kapak": "videos/fil.jpg"
+  },
+  {
+   "id": "uzunayet",
+   "baslik": "Kur'an'ın en uzun ayeti",
+   "kanca": "Kur'an'ın en uzun ayeti hangisi?",
+   "sure": "39 sn",
+   "aciklama": "Kur'an'ın en uzun ayeti Bakara 282 (borç ayeti). Bakara da en uzun sûredir: 286 ayet.",
+   "etiketler": [
+    "#bakara",
+    "#kuran",
+    "#borcayeti",
+    "#bunubiliyormuydunuz"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Bakara 2:282",
+     "not": "Borcun yazılması, katibin adaletle yazması, şahit tutulması, küçük de olsa yazmaya üşenmemek."
+    }
+   ],
+   "kontrol": [
+    "Ayet metinleri Kur'an (Osmani) ile eşleşti",
+    "Mealler Diyanet mealiyle karşılaştırıldı",
+    "2:282 en uzun ayet (karakter sayısıyla programla doğrulandı)",
+    "Bakara 286 ayet (programla sayıldı)",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "dosya": "videos/uzunayet.mp4",
+   "kapak": "videos/uzunayet.jpg"
+  },
+  {
+   "id": "yunus",
+   "baslik": "Balığın karnındaki peygamber",
+   "kanca": "Balığın karnına giren peygamber kimdir?",
+   "sure": "40,2 sn",
+   "aciklama": "Yunus Peygamber'i bir balık yuttu; karanlıkta dua etti ve kurtuldu. Kur'an ona 'Zünnûn' (balık sahibi) da der.",
+   "etiketler": [
+    "#yunuspeygamber",
+    "#kuran",
+    "#bunubiliyormuydunuz",
+    "#dinibilgiler"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Saffât 37:139",
+     "not": "Yunus peygamberlerdendir."
+    },
+    {
+     "ref": "Enbiyâ 21:87",
+     "not": "Zünnûn; karanlıklarda dua etti."
+    },
+    {
+     "ref": "Saffât 37:142",
+     "not": "Onu bir balık yuttu."
+    },
+    {
+     "ref": "Enbiyâ 21:88",
+     "not": "Duasını kabul edip üzüntüden kurtardık."
+    },
+    {
+     "ref": "Saffât 37:143",
+     "not": "Tesbih edenlerden olmasaydı balığın karnında kalacaktı."
+    }
+   ],
+   "kontrol": [
+    "Ayet metinleri Kur'an (Osmani) ile eşleşti",
+    "Mealler Diyanet mealiyle karşılaştırıldı",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "dosya": "videos/yunus.mp4",
+   "kapak": "videos/yunus.jpg"
+  }
+ ],
+ "fikirler": [
+  {
+   "baslik": "Kur'an'da adı geçen tek sahabi",
+   "not": "Zeyd b. Hârise, Ahzâb 33:37. Araştırılacak, doğrulanmadı."
+  },
+  {
+   "baslik": "İlk inen ayet",
+   "not": "Alak 96:1-5. Kaynaklarda farklı rivayetler var, kaynak iyi seçilmeli."
+  },
+  {
+   "baslik": "Kur'an'da kaç peygamberin adı geçer?",
+   "not": "Sayı kaynağa göre değişebilir (25 yaygın). Mutlaka kaynakla doğrulanmalı."
+  },
+  {
+   "baslik": "Fil Sûresi: Ebrehe ordusu",
+   "not": "Fîl 105. Tarihî ayrıntıları ayrı kaynakla doğrula."
+  }
+ ],
+ "seriler": [
+  {
+   "ad": "1. Seri: Bunu biliyor muydunuz?",
+   "durum": "Aktif",
+   "not": "Kur'an'dan şaşırtıcı bilgiler, her videoda ayet kaynağı ekranda."
+  },
+  {
+   "ad": "2. Seri",
+   "durum": "Planlanacak",
+   "not": "Birinci seri bitince birlikte belirlenecek."
+  },
+  {
+   "ad": "3. Seri",
+   "durum": "Planlanacak",
+   "not": "Birinci seri bitince birlikte belirlenecek."
+  }
+ ]
+}

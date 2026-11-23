@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dini Seri Paneli</title>
+<meta name="theme-color" content="#09090b">
+<style>
+:root{color-scheme:dark;--bg:#09090b;--s1:#111113;--s2:#18181b;--s3:#222226;--bd:#232327;--bd2:#34343a;--tx:#fafafa;--mu:#a1a1aa;--su:#71717a;--ac:#ff6b3d;--acs:rgba(255,107,61,.13);--good:#4ade80;--warn:#fbbf24;--info:#60a5fa;--r:14px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 14px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:5;background:rgba(9,9,11,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+.bar{max-width:1100px;margin:auto;padding:12px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.logo{font-weight:700;letter-spacing:-.02em}.logo b{color:var(--ac)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav button{background:none;border:0;color:var(--mu);padding:7px 12px;border-radius:9px;font:inherit;cursor:pointer}
+nav button:hover{background:var(--s2);color:var(--tx)}
+nav button.on{background:var(--acs);color:var(--ac)}
+main{max-width:1100px;margin:auto;padding:20px 16px 60px}
+h1{font-size:1.6rem;letter-spacing:-.03em;margin:0 0 4px}h2{font-size:1rem;margin:0 0 8px}
+.mu{color:var(--mu)}.sm{font-size:.82rem}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));margin-top:16px}
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;box-shadow:0 20px 40px -28px #000}
+.card.pad{padding:16px}
+.thumb{aspect-ratio:9/16;background:#000 center/cover;position:relative;cursor:pointer;max-height:360px;width:100%}
+.thumb::after{content:"▶";position:absolute;inset:0;display:grid;place-items:center;font-size:2.4rem;color:#fff;text-shadow:0 2px 12px #000}
+.body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px}
+.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:.74rem;font-weight:600;background:var(--s3);color:var(--mu)}
+.pill.taslak{background:rgba(251,191,36,.13);color:var(--warn)}.pill.onayli{background:rgba(96,165,250,.13);color:var(--info)}.pill.paylasildi{background:rgba(74,222,128,.13);color:var(--good)}
+button.b,a.b,select,textarea,input{font:inherit}
+.b{display:inline-block;background:var(--s2);color:var(--tx);border:1px solid var(--bd2);border-radius:9px;padding:7px 12px;cursor:pointer;text-decoration:none}
+.b:hover{border-color:var(--su)}.b.pri{background:var(--ac);border-color:var(--ac);color:#111;font-weight:600}
+select,textarea,input[type=text]{background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:9px;padding:8px 10px;width:100%}
+textarea{min-height:70px;resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:16px 0}
+.stat{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:14px}
+.stat b{font-size:1.7rem;display:block;letter-spacing:-.03em}
+.detail{display:grid;gap:18px;grid-template-columns:minmax(220px,300px) 1fr;margin-top:14px}
+@media(max-width:760px){.detail{grid-template-columns:1fr}}
+video{width:100%;border-radius:var(--r);background:#000;max-height:70vh}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--bd);cursor:pointer}
+.chk input{margin-top:4px;accent-color:var(--ac)}
+.src{padding:8px 0;border-bottom:1px solid var(--bd)}.src b{color:var(--ac)}
+.bar2{height:8px;border-radius:9px;background:var(--s3);overflow:hidden}.bar2 i{display:block;height:100%;background:var(--good)}
+.hide{display:none}
+table{width:100%;border-collapse:collapse}td,th{padding:9px 8px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top}th{color:var(--su);font-weight:500;font-size:.8rem}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <div class="logo">Dini Seri <b>Paneli</b></div>
+  <nav id="nav"></nav>
+</div></header>
+<main id="app"></main>
+
+<script>
+let DATA=null, view="ozet", sel=null;
+const KEY="dini-panel-v1";
+let st={};
+try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function vs(id){return st[id]=st[id]||{durum:"taslak",kontrol:[],not:""}}
+const DURUM={taslak:"Taslak",onayli:"Onaylı",paylasildi:"Paylaşıldı"};
+const TABS=[["ozet","Özet"],["videolar","Videolar"],["dogruluk","Doğruluk"],["seri","Seri planı"],["fikirler","Fikirler"]];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function nav(){
+  document.getElementById("nav").innerHTML=TABS.map(([k,t])=>`<button class="${view===k?'on':''}" data-v="${k}">${t}</button>`).join("");
+  document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>{view=b.dataset.v;sel=null;render()});
+}
+function pct(v){const s=vs(v.id);return Math.round(100*s.kontrol.filter(Boolean).length/v.kontrol.length)}
+
+function ozet(){
+  const V=DATA.videolar,c=d=>V.filter(v=>vs(v.id).durum===d).length;
+  const avg=V.length?Math.round(V.reduce((a,v)=>a+pct(v),0)/V.length):0;
+  return `<h1>Özet</h1><div class="mu">${esc(DATA.seri)} serisi</div>
+  <div class="stats">
+   <div class="stat"><b>${V.length}</b><span class="mu">Video</span></div>
+   <div class="stat"><b>${c("taslak")}</b><span class="mu">Taslak</span></div>
+   <div class="stat"><b>${c("onayli")}</b><span class="mu">Onaylı</span></div>
+   <div class="stat"><b>${c("paylasildi")}</b><span class="mu">Paylaşıldı</span></div>
+   <div class="stat"><b>%${avg}</b><span class="mu">Doğruluk kontrolü</span></div>
+  </div>
+  <h2>Son videolar</h2>${grid(V)}`;
+}
+function grid(V){
+  return `<div class="grid">${V.map(v=>`<div class="card"><div class="thumb" style="background-image:url('${v.kapak}')" data-open="${v.id}"></div>
+  <div class="body"><div class="row"><span class="pill ${vs(v.id).durum}">${DURUM[vs(v.id).durum]}</span><span class="mu sm">${v.sure}</span></div>
+  <b>${esc(v.baslik)}</b><div class="mu sm">Doğruluk: %${pct(v)}</div></div></div>`).join("")}</div>`;
+}
+function detail(v){
+  const s=vs(v.id);
+  return `<div class="row"><button class="b" id="back">← Geri</button><h1 style="margin:0">${esc(v.baslik)}</h1></div>
+  <div class="detail"><div><video src="${v.dosya}" poster="${v.kapak}" controls playsinline></video>
+   <div class="row" style="margin-top:10px"><a class="b pri" href="${v.dosya}" download>İndir</a></div></div>
+  <div class="card pad">
+   <h2>Durum</h2><select id="durum">${Object.entries(DURUM).map(([k,t])=>`<option value="${k}" ${s.durum===k?'selected':''}>${t}</option>`).join("")}</select>
+   <h2 style="margin-top:14px">Kanca</h2><div>${esc(v.kanca)}</div>
+   <h2 style="margin-top:14px">Açıklama (Instagram için)</h2><textarea readonly id="cap">${esc(v.aciklama+"\n\n"+v.etiketler.join(" "))}</textarea>
+   <div class="row" style="margin-top:6px"><button class="b" id="copy">Kopyala</button></div>
+   <h2 style="margin-top:14px">Not</h2><textarea id="not" placeholder="Kendine not...">${esc(s.not||"")}</textarea>
+  </div></div>
+  <div class="card pad" style="margin-top:14px"><h2>Doğruluk kontrol listesi · %${pct(v)}</h2>
+   <div class="bar2"><i style="width:${pct(v)}%"></i></div>
+   ${v.kontrol.map((k,i)=>`<label class="chk"><input type="checkbox" data-i="${i}" ${s.kontrol[i]?'checked':''}><span>${esc(k)}</span></label>`).join("")}
+  </div>
+  <div class="card pad" style="margin-top:14px"><h2>Kaynaklar</h2>
+   ${v.kaynaklar.map(k=>`<div class="src"><b>${esc(k.ref)}</b> <span class="mu">${esc(k.not)}</span></div>`).join("")}</div>`;
+}
+function dogruluk(){
+  return `<h1>Doğruluk</h1><p class="mu">Her videonun ayet kaynakları ve kontrol durumu. Yayından önce bilgili biri son kez izlemeli.</p>
+  ${DATA.videolar.map(v=>`<div class="card pad" style="margin-top:14px"><div class="row"><h2 style="margin:0">${esc(v.baslik)}</h2><span class="mu sm">%${pct(v)}</span></div>
+  <div class="bar2" style="margin:8px 0"><i style="width:${pct(v)}%"></i></div>
+  <table><tr><th>Kaynak</th><th>İçerik</th></tr>${v.kaynaklar.map(k=>`<tr><td><b>${esc(k.ref)}</b></td><td class="mu">${esc(k.not)}</td></tr>`).join("")}</table>
+  <button class="b" data-open="${v.id}" style="margin-top:10px">Kontrol listesini aç</button></div>`).join("")}`;
+}
+function seri(){
+  return `<h1>Seri planı</h1><div class="grid">${DATA.seriler.map(s=>`<div class="card pad"><div class="row"><b>${esc(s.ad)}</b><span class="pill ${s.durum==='Aktif'?'paylasildi':''}">${esc(s.durum)}</span></div><p class="mu">${esc(s.not)}</p></div>`).join("")}</div>`;
+}
+function fikirler(){
+  const own=st._fikir||[];
+  return `<h1>Fikirler</h1><p class="mu">Bunlar sadece fikirdir; hiçbiri doğrulanmadı. Video yapmadan önce kaynak kontrolü şart.</p>
+  <div class="card pad"><table><tr><th>Konu</th><th>Not</th></tr>
+  ${DATA.fikirler.concat(own).map(f=>`<tr><td><b>${esc(f.baslik)}</b></td><td class="mu">${esc(f.not)}</td></tr>`).join("")}</table>
+  <div class="row" style="margin-top:12px"><input type="text" id="fb" placeholder="Yeni fikir başlığı"><input type="text" id="fn" placeholder="Not"><button class="b pri" id="fadd">Ekle</button></div></div>`;
+}
+function bind(){
+  document.querySelectorAll("[data-open]").forEach(e=>e.onclick=()=>{sel=e.dataset.open;view="videolar";render();scrollTo(0,0)});
+  const v=DATA.videolar.find(x=>x.id===sel);
+  if(v&&view==="videolar"){
+    document.getElementById("back").onclick=()=>{sel=null;render()};
+    document.getElementById("durum").onchange=e=>{vs(v.id).durum=e.target.value;save()};
+    document.getElementById("not").oninput=e=>{vs(v.id).not=e.target.value;save()};
+    document.querySelectorAll(".chk input").forEach(c=>c.onchange=()=>{vs(v.id).kontrol[+c.dataset.i]=c.checked;save();render()});
+    document.getElementById("copy").onclick=async e=>{const t=document.getElementById("cap");t.select();try{await navigator.clipboard.writeText(t.value);e.target.textContent="Kopyalandı"}catch(_){document.execCommand("copy")}};
+  }
+  const fa=document.getElementById("fadd");
+  if(fa)fa.onclick=()=>{const b=document.getElementById("fb").value.trim();if(!b)return;(st._fikir=st._fikir||[]).push({baslik:b,not:document.getElementById("fn").value});save();render()};
+}
+function render(){
+  nav();
+  const a=document.getElementById("app");
+  if(view==="ozet")a.innerHTML=ozet();
+  else if(view==="videolar"){const v=DATA.videolar.find(x=>x.id===sel);a.innerHTML=v?detail(v):`<h1>Videolar</h1>${grid(DATA.videolar)}`}
+  else if(view==="dogruluk")a.innerHTML=dogruluk();
+  else if(view==="seri")a.innerHTML=seri();
+  else a.innerHTML=fikirler();
+  bind();
+}
+fetch("data.json").then(r=>r.json()).then(d=>{DATA=d;render()}).catch(()=>{document.getElementById("app").textContent="data.json yüklenemedi (dosyayı bir sunucudan aç)."});
+</script>
+</body>
+</html>
