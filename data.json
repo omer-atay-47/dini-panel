@@ -47,7 +47,8 @@
     "Meryem adı 34 yerde geçiyor (sayım yapıldı)",
     "Zekeriyya/rızık cümlesi belirsizlik bırakmayacak şekilde düzeltildi",
     "Bilgili biri son kez izledi (yapılacak)"
-   ]
+   ],
+   "hikaye": "videos/story/meryem.mp4"
   },
   {
    "id": "ramazan",
@@ -91,7 +92,8 @@
     "Kur'an'da başka ay adı geçmediği doğrulandı",
     "Ekrandaki '1000 ay ≈ 83 yıl' hesabı kontrol edildi (1000/12 ≈ 83,3)",
     "Bilgili biri son kez izledi (yapılacak)"
-   ]
+   ],
+   "hikaye": "videos/story/ramazan.mp4"
   },
   {
    "id": "muhammed",
@@ -135,7 +137,8 @@
     "Bilgili biri son kez izledi (yapılacak)"
    ],
    "dosya": "videos/muhammed.mp4",
-   "kapak": "videos/muhammed.jpg"
+   "kapak": "videos/muhammed.jpg",
+   "hikaye": "videos/story/muhammed.mp4"
   },
   {
    "id": "kehf",
@@ -178,7 +181,8 @@
     "Bilgili biri son kez izledi (yapılacak)"
    ],
    "dosya": "videos/kehf.mp4",
-   "kapak": "videos/kehf.jpg"
+   "kapak": "videos/kehf.jpg",
+   "hikaye": "videos/story/kehf.mp4"
   },
   {
    "id": "fil",
@@ -222,7 +226,8 @@
     "Bilgili biri son kez izledi (yapılacak)"
    ],
    "dosya": "videos/fil.mp4",
-   "kapak": "videos/fil.jpg"
+   "kapak": "videos/fil.jpg",
+   "hikaye": "videos/story/fil.mp4"
   },
   {
    "id": "uzunayet",
@@ -250,7 +255,8 @@
     "Bilgili biri son kez izledi (yapılacak)"
    ],
    "dosya": "videos/uzunayet.mp4",
-   "kapak": "videos/uzunayet.jpg"
+   "kapak": "videos/uzunayet.jpg",
+   "hikaye": "videos/story/uzunayet.mp4"
   },
   {
    "id": "yunus",
@@ -292,7 +298,8 @@
     "Bilgili biri son kez izledi (yapılacak)"
    ],
    "dosya": "videos/yunus.mp4",
-   "kapak": "videos/yunus.jpg"
+   "kapak": "videos/yunus.jpg",
+   "hikaye": "videos/story/yunus.mp4"
   }
  ],
  "fikirler": [

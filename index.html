@@ -54,9 +54,14 @@ video{width:100%;border-radius:var(--r);background:#000;max-height:70vh}
 .ev i{display:block;aspect-ratio:4/5;border-radius:5px;background:#000 center/cover}
 .ev b{font-size:.74rem;font-weight:600;line-height:1.3;overflow-wrap:anywhere}
 .ev .pill{align-self:flex-start}
+.st{background:none;border:1px solid var(--ac);border-radius:99px;color:var(--ac);font:600 .72rem/1.2 inherit;font-family:inherit;padding:4px 8px;cursor:pointer}
+.st:hover{background:var(--acs)}
+dialog{background:var(--s1);color:var(--tx);border:1px solid var(--bd2);border-radius:var(--r);padding:12px;width:min(360px,92vw)}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+dialog video{max-height:68vh;display:block;margin:10px 0}
 .legend{display:none;margin-top:10px}
 .pill.bugun{background:var(--acs);color:var(--ac)}.pill.planli{background:rgba(96,165,250,.13);color:var(--info)}.pill.gecikti{background:rgba(251,191,36,.13);color:var(--warn)}
-@media(max-width:760px){.cal{gap:3px}.day{padding:3px;min-height:64px;border-radius:7px}.ev{padding:2px;border-width:2px}.ev b,.ev .pill{display:none}.ev.paylasildi{border-color:var(--good)}.ev.bugun{border-color:var(--ac)}.ev.planli{border-color:var(--info)}.ev.gecikti{border-color:var(--warn)}.legend{display:flex}}
+@media(max-width:760px){.cal{gap:3px}.day{padding:3px;min-height:64px;border-radius:7px}.ev{padding:2px;border-width:2px}.ev b,.ev .pill{display:none}.ev.paylasildi{border-color:var(--good)}.ev.bugun{border-color:var(--ac)}.ev.planli{border-color:var(--info)}.ev.gecikti{border-color:var(--warn)}.legend{display:flex}.day .st{font-size:.58rem;padding:2px 0}td{padding:9px 4px}}
 table{width:100%;border-collapse:collapse}td,th{padding:9px 8px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top}th{color:var(--su);font-weight:500;font-size:.8rem}
 </style>
 </head>
@@ -66,6 +71,8 @@ table{width:100%;border-collapse:collapse}td,th{padding:9px 8px;border-bottom:1p
   <nav id="nav"></nav>
 </div></header>
 <main id="app"></main>
+<dialog id="hd" aria-labelledby="hdb"><div class="row" style="justify-content:space-between"><b id="hdb"></b><button class="b" id="hdk">Kapat</button></div>
+  <video id="hdv" controls playsinline></video><a class="b pri" id="hdi" download>Hikâyeyi indir</a></dialog>
 
 <script>
 let DATA=null, view="ozet", sel=null, PLAN=null, POSTED=[], ay=null;
@@ -106,7 +113,7 @@ function detail(v){
   const s=vs(v.id);
   return `<div class="row"><button class="b" id="back">← Geri</button><h1 style="margin:0">${esc(v.baslik)}</h1></div>
   <div class="detail"><div><video src="${v.dosya}" poster="${v.kapak}" controls playsinline></video>
-   <div class="row" style="margin-top:10px"><a class="b pri" href="${v.dosya}" download>İndir</a></div></div>
+   <div class="row" style="margin-top:10px"><a class="b pri" href="${v.dosya}" download>İndir</a>${v.hikaye?`<button class="b" data-story="${v.id}">Hikâyesini izle</button>`:""}</div></div>
   <div class="card pad">
    <h2>Durum</h2><select id="durum">${Object.entries(DURUM).map(([k,t])=>`<option value="${k}" ${s.durum===k?'selected':''}>${t}</option>`).join("")}</select>
    <h2 style="margin-top:14px">Kanca</h2><div>${esc(v.kanca)}</div>
@@ -162,7 +169,7 @@ function takvim(){
   let cells="";
   for(let i=0;i<Math.ceil((bas+gunSayisi)/7)*7;i++){
     const d=new Date(Date.UTC(y,m-1,1-bas+i)).toISOString().slice(0,10);
-    cells+=`<div class="day${d.slice(0,7)!==ay?' out':''}${d===t?' today':''}"><span>${Number(d.slice(8))}</span>${E.filter(e=>e.tarih===d).map(e=>`<button class="ev ${e.durum}" data-open="${e.v.id}" title="${esc(e.v.baslik)} · ${PAY[e.durum]}" aria-label="${tarihYaz(d)}: ${esc(e.v.baslik)}, ${PAY[e.durum]}"><i style="background-image:url('${e.v.kapak}')"></i><b>${esc(e.v.baslik)}</b><span class="pill ${e.durum}">${PAY[e.durum]}</span></button>`).join("")}</div>`;
+    cells+=`<div class="day${d.slice(0,7)!==ay?' out':''}${d===t?' today':''}"><span>${Number(d.slice(8))}</span>${E.filter(e=>e.tarih===d).map(e=>`<button class="ev ${e.durum}" data-open="${e.v.id}" title="${esc(e.v.baslik)} · ${PAY[e.durum]}" aria-label="${tarihYaz(d)}: ${esc(e.v.baslik)}, ${PAY[e.durum]}"><i style="background-image:url('${e.v.kapak}')"></i><b>${esc(e.v.baslik)}</b><span class="pill ${e.durum}">${PAY[e.durum]}</span></button>${e.v.hikaye?`<button class="st" data-story="${e.v.id}" aria-label="${tarihYaz(d)}: ${esc(e.v.baslik)} hikâyesi">Hikâye</button>`:""}`).join("")}</div>`;
   }
   const geciken=E.filter(e=>e.durum==="gecikti").length;
   return `<h1>Takvim</h1><div class="mu">Her gün 20:00'de (Türkiye saati) sıradaki video ve ardından hikâyesi paylaşılır.</div>
@@ -170,10 +177,20 @@ function takvim(){
   <div class="row" style="margin:16px 0 10px"><button class="b" data-ay="-1" aria-label="Önceki ay">←</button><h2 style="margin:0;min-width:130px;text-align:center">${AYLAR[m-1]} ${y}</h2><button class="b" data-ay="1" aria-label="Sonraki ay">→</button></div>
   <div class="cal">${GUNLER.map(g=>`<div class="dow">${g}</div>`).join("")}${cells}</div>
   <div class="row legend">${Object.entries(PAY).map(([k,v])=>`<span class="pill ${k}">${v}</span>`).join("")}</div>
-  <div class="card pad" style="margin-top:18px"><h2>Paylaşım sırası</h2><table><tr><th>Tarih</th><th>Video</th><th>Durum</th></tr>
-  ${E.map(e=>`<tr><td>${tarihYaz(e.tarih)}</td><td><b data-open="${e.v.id}" style="cursor:pointer">${esc(e.v.baslik)}</b></td><td><span class="pill ${e.durum}">${PAY[e.durum]}</span>${e.hikaye?' <span class="pill paylasildi">Hikâye ✓</span>':''}</td></tr>`).join("")}</table></div>`;
+  <div class="card pad" style="margin-top:18px"><h2>Paylaşım sırası</h2><table><tr><th>Tarih</th><th>Video</th><th>Hikâye</th><th>Durum</th></tr>
+  ${E.map(e=>`<tr><td>${tarihYaz(e.tarih)}</td><td><b data-open="${e.v.id}" style="cursor:pointer">${esc(e.v.baslik)}</b></td><td>${e.v.hikaye?`<button class="st" data-story="${e.v.id}">İzle</button>`:'<span class="mu">Yok</span>'}</td><td><span class="pill ${e.durum}">${PAY[e.durum]}</span>${e.hikaye?' <span class="pill paylasildi">Hikâye ✓</span>':''}</td></tr>`).join("")}</table></div>`;
 }
+function hikayeAc(id){
+  const v=DATA.videolar.find(x=>x.id===id), d=document.getElementById("hd");
+  document.getElementById("hdb").textContent="Hikâye · "+v.baslik;
+  document.getElementById("hdv").src=v.hikaye;
+  document.getElementById("hdi").href=v.hikaye;
+  d.showModal();
+}
+document.getElementById("hdk").onclick=()=>document.getElementById("hd").close();
+document.getElementById("hd").onclose=()=>{const o=document.getElementById("hdv");o.pause();o.removeAttribute("src");o.load()};
 function bind(){
+  document.querySelectorAll("[data-story]").forEach(b=>b.onclick=()=>hikayeAc(b.dataset.story));
   document.querySelectorAll("[data-ay]").forEach(b=>b.onclick=()=>{const [y,m]=ay.split("-").map(Number);ay=new Date(Date.UTC(y,m-1+Number(b.dataset.ay),1)).toISOString().slice(0,7);render()});
   document.querySelectorAll("[data-open]").forEach(e=>e.onclick=()=>{sel=e.dataset.open;view="videolar";render();scrollTo(0,0)});
   const v=DATA.videolar.find(x=>x.id===sel);

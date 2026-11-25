@@ -58,8 +58,10 @@ def make(vid, seconds, png):
 
 
 def main():
-    with open(os.path.join(ROOT, "data.json"), encoding="utf-8") as f:
-        videos = json.load(f)["videolar"]
+    data_path = os.path.join(ROOT, "data.json")
+    with open(data_path, encoding="utf-8") as f:
+        data = json.load(f)
+    videos = data["videolar"]
     with open(os.path.join(ROOT, "otomasyon", "schedule.json"), encoding="utf-8") as f:
         seconds = {s["id"]: s.get("hikaye_sn", 10) for s in json.load(f)}
     os.makedirs(os.path.join(ROOT, "videos", "story"), exist_ok=True)
@@ -70,6 +72,9 @@ def main():
             out = os.path.join(ROOT, "videos", "story", f"{v['id']}.mp4")
             if "--hepsi" in sys.argv or not os.path.exists(out):
                 make(v["id"], seconds.get(v["id"], 10), png)
+            v["hikaye"] = f"videos/story/{v['id']}.mp4"  # panel bu alana bakar
+    with open(data_path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
 
 
 if __name__ == "__main__":
