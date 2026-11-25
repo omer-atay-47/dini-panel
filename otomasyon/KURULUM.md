@@ -3,7 +3,7 @@
 Her gün 20:00'de (Türkiye saati) sıradaki video, **farklı Instagram hesabına** otomatik Reels olarak paylaşılır; hemen ardından o videoyu tanıtan kısa bir **hikâye** de paylaşılır.
 Sistem GitHub'da ücretsiz çalışır: videolar GitHub Pages'te durur, paylaşımı GitHub Actions yapar.
 
-Takvim: `otomasyon/schedule.json` (7 gün, 25 Kasım - 1 Aralık 2026). Paylaşılanlar `otomasyon/posted.json` içine yazılır.
+Takvim: `otomasyon/schedule.json` (7 gün, 26 Kasım - 2 Aralık 2026). Paylaşılanlar `otomasyon/posted.json` içine yazılır.
 
 ## Sende olması gerekenler (bunları sen yapmalısın)
 
