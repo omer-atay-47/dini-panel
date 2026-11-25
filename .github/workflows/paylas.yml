@@ -1,13 +1,12 @@
-name: Günlük paylaşım
+name: Elle paylaşım (yedek)
 
+# Günlük zamanlama kapalı: paylaşımlar Meta Business Suite'ten planlanıyor (bkz. otomasyon/KURULUM.md).
 on:
-  schedule:
-    - cron: "0 17 * * *"   # her gün 17:00 UTC = 20:00 Türkiye saati
-  workflow_dispatch:        # elle de çalıştırılabilir (Actions sekmesi > Run workflow)
+  workflow_dispatch:        # yalnızca elle çalışır (Actions sekmesi > Run workflow)
     inputs:
       dry_run:
         description: "1 yazarsan paylaşmadan dener"
-        default: "0"
+        default: "1"
 
 permissions:
   contents: write

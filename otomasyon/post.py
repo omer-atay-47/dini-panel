@@ -72,7 +72,8 @@ def main():
     done = {p["id"] for p in posted}
     today = os.environ.get("FORCE_DATE") or today_tr()
 
-    due = [s for s in schedule if s["id"] not in done and s["tarih"] <= today]
+    # "meta": true olanlar Meta Business Suite'te planlı; buradan paylaşılırsa iki kez gider
+    due = [s for s in schedule if s["id"] not in done and not s.get("meta") and s["tarih"] <= today]
     if not due:
         print(f"{today}: paylaşılacak video yok.")
         return

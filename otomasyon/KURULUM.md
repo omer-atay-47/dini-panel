@@ -1,39 +1,38 @@
-# Otomatik paylaşım: kurulum
+# Paylaşım: Meta Business Suite ile planlama
 
-Her gün 20:00'de (Türkiye saati) sıradaki video, **farklı Instagram hesabına** otomatik Reels olarak paylaşılır; hemen ardından o videoyu tanıtan kısa bir **hikâye** de paylaşılır.
-Sistem GitHub'da ücretsiz çalışır: videolar GitHub Pages'te durur, paylaşımı GitHub Actions yapar.
+Videolar **Meta Business Suite**'te (business.facebook.com) önceden planlanır; zamanı gelince Meta kendisi yayınlar. Bilgisayarın açık olması gerekmez.
 
-Takvim: `otomasyon/schedule.json` (7 gün, 26 Kasım - 2 Aralık 2026). Paylaşılanlar `otomasyon/posted.json` içine yazılır.
+- Giriş: **"Instagram ile devam et"** (Facebook hesabı gerekmez).
+- Her gün **20:00** video (Reels), **20:05** hikâyesi (Türkiye saati).
+- Planlanan ilk hafta: 26 Kasım - 2 Aralık 2026.
 
-## Sende olması gerekenler (bunları sen yapmalısın)
+## Yeni video ekleme
 
-1. **Instagram hesabı** profesyonele çevrilmeli (Ayarlar > Hesap türü). **İşletme** seç: hikâyenin otomatik paylaşımı İçerik üreticisi hesabında çalışmayabilir.
-2. **Meta uygulaması:** developers.facebook.com > Uygulama oluştur > **Instagram API with Instagram Login** ekle. Hesabını uygulamaya test kullanıcısı/rol olarak ekle.
-3. İzinler: `instagram_business_basic`, `instagram_business_content_publish`.
-4. Uygulama panelinden **uzun süreli (60 gün) erişim anahtarı** üret ve **Instagram kullanıcı kimliğini** not al.
-5. GitHub deposunda **Settings > Secrets and variables > Actions**:
-   - Secret `IG_USER_ID`: Instagram kullanıcı kimliği
-   - Secret `IG_TOKEN`: erişim anahtarı
-   - Variable `SITE_URL`: `https://KULLANICI_ADIN.github.io/dini-panel`
-6. **Settings > Pages**: Branch `main`, klasör `/ (root)`.
+1. Videoyu `videos/<id>.mp4` olarak koy, `data.json` içine bilgilerini ekle.
+2. `otomasyon/schedule.json` içine tarihini ekle.
+3. `python otomasyon/hikaye.py` çalıştır: `videos/story/<id>.mp4` oluşur.
+4. Business Suite > **Reel oluştur**: videoyu yükle, açıklamayı panelden kopyala, **Program** ile tarih ve 20:00.
+5. Business Suite > **Hikaye oluştur**: hikâye dosyasını yükle, **Program** ile aynı gün 20:05.
+6. İçerik > Planlanmış listesinde ikisini de gör.
+7. `schedule.json` satırına `"meta": true` ekle ve GitHub'a yükle. Panelde "Planlandı" görünür.
 
-Anahtarı sohbete yazma; yalnızca GitHub Secrets içine kendin yapıştır.
+## Takvimdeki durumlar
 
-## Deneme (hiçbir şey paylaşmadan)
+- **Planlandı / Bugün 20:00:** Meta'da planlı.
+- **Saati geçti:** yayın saati geçmiş; yayınlandığını Instagram'dan kontrol et (panel göremez).
+- **Planlanmadı:** `"meta": true` yok; paylaşılmayacak.
 
-Actions sekmesi > "Günlük paylaşım" > Run workflow > `dry_run` = 1.
-Günlükte "Paylaşılacak: meryem ..." ve açıklama metni görünmeli.
+Tarih veya saati Meta'da değiştirirsen `schedule.json` dosyasını da güncelle.
 
 ## Hikâye
 
-- Dosyalar `videos/story/<id>.mp4`: videonun ilk 8-14 saniyesi, "YENİ VİDEO" ve "Tamamı profilimizde" yazısıyla.
-- Yeni video eklenince `python otomasyon/hikaye.py` çalıştırılıp çıkan dosya GitHub'a yüklenmeli.
-- Instagram, otomatik paylaşımda hikâyeye **bağlantı çıkartması** eklemeye izin vermez. Dokununca videoya giden hikâye istiyorsan Instagram uygulamasında videoyu elle "hikâyene ekle" ile paylaş.
-- Hikâye paylaşılamazsa video yine paylaşılmış sayılır; Actions günlüğünde uyarı görünür.
+- Videonun ilk 8-14 saniyesi, "YENİ VİDEO" ve "Tamamı profilimizde" yazısıyla.
+- Planlanan hikâyeye dokununca videoya gidilmez. Bunu istiyorsan Instagram uygulamasında videoyu elle "hikâyene ekle" ile paylaş.
+
+## Yedek yöntem (kullanılmıyor)
+
+`otomasyon/post.py` Instagram API ile paylaşır; bunun için Meta geliştirici uygulaması, `IG_USER_ID` / `IG_TOKEN` gizli anahtarları ve `SITE_URL` değişkeni gerekir. Günlük zamanlaması kapalıdır; GitHub Actions'ta yalnızca elle çalışır ve varsayılan olarak deneme modundadır. `"meta": true` olan videoları atlar. Anahtarı sohbete yazma.
 
 ## Dikkat
 
-- Erişim anahtarı yaklaşık **60 günde** biter; bitmeden yenilemen gerekir.
 - Videolar herkese açık bir sitede durur (GitHub Pages'in ücretsiz sürümü böyle çalışır).
-- Gün atlanırsa sistem gecikmiş videoyu ertesi gün paylaşır; aynı video iki kez gitmez.
-- Instagram Reels sınırlarına uygun: dikey, 40-45 sn, mp4 (H.264/AAC).
