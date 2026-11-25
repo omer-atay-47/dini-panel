@@ -1,9 +1,9 @@
 [
- {"id": "meryem",   "tarih": "2026-11-25"},
- {"id": "ramazan",  "tarih": "2026-11-26"},
- {"id": "muhammed", "tarih": "2026-11-27"},
- {"id": "kehf",     "tarih": "2026-11-28"},
- {"id": "fil",      "tarih": "2026-11-29"},
- {"id": "uzunayet", "tarih": "2026-11-30"},
- {"id": "yunus",    "tarih": "2026-12-01"}
+ {"id": "meryem",   "tarih": "2026-11-25", "hikaye_sn": 7.65},
+ {"id": "ramazan",  "tarih": "2026-11-26", "hikaye_sn": 12.55},
+ {"id": "muhammed", "tarih": "2026-11-27", "hikaye_sn": 9.53},
+ {"id": "kehf",     "tarih": "2026-11-28", "hikaye_sn": 10.8},
+ {"id": "fil",      "tarih": "2026-11-29", "hikaye_sn": 13.5},
+ {"id": "uzunayet", "tarih": "2026-11-30", "hikaye_sn": 10.31},
+ {"id": "yunus",    "tarih": "2026-12-01", "hikaye_sn": 8.28}
 ]

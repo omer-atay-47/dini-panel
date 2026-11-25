@@ -1,13 +1,13 @@
 # Otomatik paylaşım: kurulum
 
-Her gün 20:00'de (Türkiye saati) sıradaki video, **farklı Instagram hesabına** otomatik Reels olarak paylaşılır.
+Her gün 20:00'de (Türkiye saati) sıradaki video, **farklı Instagram hesabına** otomatik Reels olarak paylaşılır; hemen ardından o videoyu tanıtan kısa bir **hikâye** de paylaşılır.
 Sistem GitHub'da ücretsiz çalışır: videolar GitHub Pages'te durur, paylaşımı GitHub Actions yapar.
 
 Takvim: `otomasyon/schedule.json` (7 gün, 25 Kasım - 1 Aralık 2026). Paylaşılanlar `otomasyon/posted.json` içine yazılır.
 
 ## Sende olması gerekenler (bunları sen yapmalısın)
 
-1. **Instagram hesabı** profesyonele çevrilmeli (Ayarlar > Hesap türü > İçerik üreticisi veya İşletme).
+1. **Instagram hesabı** profesyonele çevrilmeli (Ayarlar > Hesap türü). **İşletme** seç: hikâyenin otomatik paylaşımı İçerik üreticisi hesabında çalışmayabilir.
 2. **Meta uygulaması:** developers.facebook.com > Uygulama oluştur > **Instagram API with Instagram Login** ekle. Hesabını uygulamaya test kullanıcısı/rol olarak ekle.
 3. İzinler: `instagram_business_basic`, `instagram_business_content_publish`.
 4. Uygulama panelinden **uzun süreli (60 gün) erişim anahtarı** üret ve **Instagram kullanıcı kimliğini** not al.
@@ -23,6 +23,13 @@ Anahtarı sohbete yazma; yalnızca GitHub Secrets içine kendin yapıştır.
 
 Actions sekmesi > "Günlük paylaşım" > Run workflow > `dry_run` = 1.
 Günlükte "Paylaşılacak: meryem ..." ve açıklama metni görünmeli.
+
+## Hikâye
+
+- Dosyalar `videos/story/<id>.mp4`: videonun ilk 8-14 saniyesi, "YENİ VİDEO" ve "Tamamı profilimizde" yazısıyla.
+- Yeni video eklenince `python otomasyon/hikaye.py` çalıştırılıp çıkan dosya GitHub'a yüklenmeli.
+- Instagram, otomatik paylaşımda hikâyeye **bağlantı çıkartması** eklemeye izin vermez. Dokununca videoya giden hikâye istiyorsan Instagram uygulamasında videoyu elle "hikâyene ekle" ile paylaş.
+- Hikâye paylaşılamazsa video yine paylaşılmış sayılır; Actions günlüğünde uyarı görünür.
 
 ## Dikkat
 
