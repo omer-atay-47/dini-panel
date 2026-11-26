@@ -3,13 +3,13 @@
 Videolar **Meta Business Suite**'te (business.facebook.com) önceden planlanır; zamanı gelince Meta kendisi yayınlar. Bilgisayarın açık olması gerekmez.
 
 - Giriş: **"Instagram ile devam et"** (Facebook hesabı gerekmez).
-- Her gün iki video (Türkiye saati): 1. seri **20:00**, 2. seri **21:00**; hikâyeleri 5 dakika sonra.
+- Her gün iki video (Türkiye saati): 1. seri **12:30**, 2. seri **20:00**; hikâyeleri 5 dakika sonra. (26 Kasım geçiş günü: 20:00 ve 21:00.)
 - Planlı: 1. seri 26 Kasım - 2 Aralık, 2. seri 26 Kasım - 3 Aralık 2026.
 
 ## Yeni video ekleme
 
 1. Videoyu `videos/<id>.mp4` olarak koy, `data.json` içine bilgilerini ekle.
-2. `otomasyon/schedule.json` içine tarihini ekle (20:00 dışındaysa `"saat"` alanını da).
+2. `otomasyon/schedule.json` içine tarihini ekle ve `"saat"` alanını.
 3. `python otomasyon/hikaye.py` çalıştır: `videos/story/<id>.mp4` oluşur.
 4. Business Suite > **Reel oluştur**: videoyu yükle, açıklamayı panelden kopyala, **Program** ile tarih ve saat.
 5. Business Suite > **Hikaye oluştur**: hikâye dosyasını yükle, **Program** ile aynı gün, videodan 5 dakika sonra.
