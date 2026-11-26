@@ -153,18 +153,19 @@ const AYLAR=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağusto
 const GUNLER=["Pzt","Sal","Çar","Per","Cum","Cmt","Paz"];
 const bugun=()=>new Date(Date.now()+3*36e5).toISOString().slice(0,10); // Türkiye saati
 const tarihYaz=t=>{const [y,m,g]=t.split("-").map(Number);return `${g} ${AYLAR[m-1]} ${GUNLER[(new Date(Date.UTC(y,m-1,g)).getUTCDay()+6)%7]}`};
-const PAY={paylasildi:"Paylaşıldı",bugun:"Bugün 20:00",planli:"Planlandı",gecti:"Saati geçti",yok:"Planlanmadı"};
+const PAY={paylasildi:"Paylaşıldı",bugun:"Bugün",planli:"Planlandı",gecti:"Saati geçti",yok:"Planlanmadı"};
+const etiket=e=>e.durum==="bugun"?`Bugün ${e.saat}`:PAY[e.durum];
 const saat=()=>new Date(Date.now()+3*36e5).toISOString().slice(11,16);
 function plan(){
   const t=bugun();
   return PLAN.map(p=>{
     const v=DATA.videolar.find(x=>x.id===p.id), done=POSTED.find(x=>x.id===p.id);
     if(!v)return null;
-    const tarih=done?done.tarih:p.tarih;
+    const tarih=done?done.tarih:p.tarih, vakit=p.saat||"20:00";
     // meta: Meta Business Suite'te planlı; yayınlandığı panelden görülemez
-    const durum=done?"paylasildi":!p.meta?"yok":(p.tarih<t||(p.tarih===t&&saat()>="20:00"))?"gecti":p.tarih===t?"bugun":"planli";
-    return {v,tarih,durum,hikaye:!!(done&&done.ig_story_id)};
-  }).filter(Boolean).sort((a,b)=>a.tarih.localeCompare(b.tarih));
+    const durum=done?"paylasildi":!p.meta?"yok":(p.tarih<t||(p.tarih===t&&saat()>=vakit))?"gecti":p.tarih===t?"bugun":"planli";
+    return {v,tarih,saat:vakit,durum,hikaye:!!(done&&done.ig_story_id)};
+  }).filter(Boolean).sort((a,b)=>(a.tarih+a.saat).localeCompare(b.tarih+b.saat));
 }
 function takvim(){
   if(!PLAN)return `<h1>Takvim</h1><p class="mu">Paylaşım takvimi yüklenemedi. Sayfayı yenile.</p>`;
@@ -175,17 +176,17 @@ function takvim(){
   let cells="";
   for(let i=0;i<Math.ceil((bas+gunSayisi)/7)*7;i++){
     const d=new Date(Date.UTC(y,m-1,1-bas+i)).toISOString().slice(0,10);
-    cells+=`<div class="day${d.slice(0,7)!==ay?' out':''}${d===t?' today':''}"><span>${Number(d.slice(8))}</span>${E.filter(e=>e.tarih===d).map(e=>`<button class="ev ${e.durum}" data-open="${e.v.id}" title="${esc(e.v.baslik)} · ${PAY[e.durum]}" aria-label="${tarihYaz(d)}: ${esc(e.v.baslik)}, ${PAY[e.durum]}"><i style="background-image:url('${e.v.kapak}')"></i><b>${esc(e.v.baslik)}</b><span class="pill ${e.durum}">${PAY[e.durum]}</span></button>${e.v.hikaye?`<button class="st" data-story="${e.v.id}" aria-label="${tarihYaz(d)}: ${esc(e.v.baslik)} hikâyesi">Hikâye</button>`:""}`).join("")}</div>`;
+    cells+=`<div class="day${d.slice(0,7)!==ay?' out':''}${d===t?' today':''}"><span>${Number(d.slice(8))}</span>${E.filter(e=>e.tarih===d).map(e=>`<button class="ev ${e.durum}" data-open="${e.v.id}" title="${esc(e.v.baslik)} · ${e.saat} · ${etiket(e)}" aria-label="${tarihYaz(d)}: ${esc(e.v.baslik)}, ${e.saat}, ${etiket(e)}"><i style="background-image:url('${e.v.kapak}')"></i><b>${esc(e.v.baslik)}</b><span class="pill ${e.durum}">${e.saat} · ${PAY[e.durum]}</span></button>${e.v.hikaye?`<button class="st" data-story="${e.v.id}" aria-label="${tarihYaz(d)}: ${esc(e.v.baslik)} hikâyesi">Hikâye</button>`:""}`).join("")}</div>`;
   }
   const eksik=E.filter(e=>e.durum==="yok").length, gecen=E.some(e=>e.durum==="gecti");
-  return `<h1>Takvim</h1><div class="mu">Videolar Meta Business Suite'te planlanır: 20:00'de video, 20:05'te hikâyesi (Türkiye saati).</div>
+  return `<h1>Takvim</h1><div class="mu">Videolar Meta Business Suite'te planlanır. Her gün 1. seri 20:00'de, 2. seri 21:00'de; hikâyeleri 5 dakika sonra (Türkiye saati).</div>
   ${gecen?`<div class="mu sm" style="margin-top:6px">"Saati geçti" yazan videoların yayınlandığını Instagram'dan kontrol et; panel bunu göremez.</div>`:""}
   ${eksik?`<div class="card pad" style="margin-top:14px;border-color:var(--warn)"><b style="color:var(--warn)">${eksik} video planlanmadı.</b> <span class="mu">Meta Business Suite'te planlanmadan paylaşılmaz.</span></div>`:""}
   <div class="row" style="margin:16px 0 10px"><button class="b" data-ay="-1" aria-label="Önceki ay">←</button><h2 style="margin:0;min-width:130px;text-align:center">${AYLAR[m-1]} ${y}</h2><button class="b" data-ay="1" aria-label="Sonraki ay">→</button></div>
   <div class="cal">${GUNLER.map(g=>`<div class="dow">${g}</div>`).join("")}${cells}</div>
   <div class="row legend">${Object.entries(PAY).map(([k,v])=>`<span class="pill ${k}">${v}</span>`).join("")}</div>
   <div class="card pad" style="margin-top:18px"><h2>Paylaşım sırası</h2><table><tr><th>Tarih</th><th>Video</th><th>Hikâye</th><th>Durum</th></tr>
-  ${E.map(e=>`<tr><td>${tarihYaz(e.tarih)}</td><td><b data-open="${e.v.id}" style="cursor:pointer">${esc(e.v.baslik)}</b></td><td>${e.v.hikaye?`<button class="st" data-story="${e.v.id}">İzle</button>`:'<span class="mu">Yok</span>'}</td><td><span class="pill ${e.durum}">${PAY[e.durum]}</span>${e.hikaye?' <span class="pill paylasildi">Hikâye ✓</span>':''}</td></tr>`).join("")}</table></div>`;
+  ${E.map(e=>`<tr><td>${tarihYaz(e.tarih)} · ${e.saat}</td><td><b data-open="${e.v.id}" style="cursor:pointer">${esc(e.v.baslik)}</b></td><td>${e.v.hikaye?`<button class="st" data-story="${e.v.id}">İzle</button>`:'<span class="mu">Yok</span>'}</td><td><span class="pill ${e.durum}">${etiket(e)}</span>${e.hikaye?' <span class="pill paylasildi">Hikâye ✓</span>':''}</td></tr>`).join("")}</table></div>`;
 }
 function hikayeAc(id){
   const v=DATA.videolar.find(x=>x.id===id), d=document.getElementById("hd");

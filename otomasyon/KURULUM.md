@@ -3,22 +3,22 @@
 Videolar **Meta Business Suite**'te (business.facebook.com) önceden planlanır; zamanı gelince Meta kendisi yayınlar. Bilgisayarın açık olması gerekmez.
 
 - Giriş: **"Instagram ile devam et"** (Facebook hesabı gerekmez).
-- Her gün **20:00** video (Reels), **20:05** hikâyesi (Türkiye saati).
-- Planlanan ilk hafta: 26 Kasım - 2 Aralık 2026.
+- Her gün iki video (Türkiye saati): 1. seri **20:00**, 2. seri **21:00**; hikâyeleri 5 dakika sonra.
+- Planlı: 1. seri 26 Kasım - 2 Aralık, 2. seri 26 Kasım - 3 Aralık 2026.
 
 ## Yeni video ekleme
 
 1. Videoyu `videos/<id>.mp4` olarak koy, `data.json` içine bilgilerini ekle.
-2. `otomasyon/schedule.json` içine tarihini ekle.
+2. `otomasyon/schedule.json` içine tarihini ekle (20:00 dışındaysa `"saat"` alanını da).
 3. `python otomasyon/hikaye.py` çalıştır: `videos/story/<id>.mp4` oluşur.
-4. Business Suite > **Reel oluştur**: videoyu yükle, açıklamayı panelden kopyala, **Program** ile tarih ve 20:00.
-5. Business Suite > **Hikaye oluştur**: hikâye dosyasını yükle, **Program** ile aynı gün 20:05.
+4. Business Suite > **Reel oluştur**: videoyu yükle, açıklamayı panelden kopyala, **Program** ile tarih ve saat.
+5. Business Suite > **Hikaye oluştur**: hikâye dosyasını yükle, **Program** ile aynı gün, videodan 5 dakika sonra.
 6. İçerik > Planlanmış listesinde ikisini de gör.
 7. `schedule.json` satırına `"meta": true` ekle ve GitHub'a yükle. Panelde "Planlandı" görünür.
 
 ## Takvimdeki durumlar
 
-- **Planlandı / Bugün 20:00:** Meta'da planlı.
+- **Planlandı / Bugün (saat):** Meta'da planlı.
 - **Saati geçti:** yayın saati geçmiş; yayınlandığını Instagram'dan kontrol et (panel göremez).
 - **Planlanmadı:** `"meta": true` yok; paylaşılmayacak.
 
