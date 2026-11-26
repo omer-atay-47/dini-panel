@@ -1,9 +1,17 @@
 [
- {"id": "meryem",   "tarih": "2026-11-26", "meta": true, "hikaye_sn": 7.65},
- {"id": "ramazan",  "tarih": "2026-11-27", "meta": true, "hikaye_sn": 12.55},
+ {"id": "meryem", "tarih": "2026-11-26", "meta": true, "hikaye_sn": 7.65},
+ {"id": "ramazan", "tarih": "2026-11-27", "meta": true, "hikaye_sn": 12.55},
  {"id": "muhammed", "tarih": "2026-11-28", "meta": true, "hikaye_sn": 9.53},
- {"id": "kehf",     "tarih": "2026-11-29", "meta": true, "hikaye_sn": 10.8},
- {"id": "fil",      "tarih": "2026-11-30", "meta": true, "hikaye_sn": 13.5},
+ {"id": "kehf", "tarih": "2026-11-29", "meta": true, "hikaye_sn": 10.8},
+ {"id": "fil", "tarih": "2026-11-30", "meta": true, "hikaye_sn": 13.5},
  {"id": "uzunayet", "tarih": "2026-12-01", "meta": true, "hikaye_sn": 10.31},
- {"id": "yunus",    "tarih": "2026-12-02", "meta": true, "hikaye_sn": 8.28}
+ {"id": "yunus", "tarih": "2026-12-02", "meta": true, "hikaye_sn": 8.28},
+ {"id": "s2-yuzyil", "tarih": "2026-12-03", "hikaye_sn": 8.5},
+ {"id": "s2-bulut", "tarih": "2026-12-04", "hikaye_sn": 7.93},
+ {"id": "s2-taht", "tarih": "2026-12-05", "hikaye_sn": 8.41},
+ {"id": "s2-emanet", "tarih": "2026-12-06", "hikaye_sn": 7.75},
+ {"id": "s2-binler", "tarih": "2026-12-07", "hikaye_sn": 8.47},
+ {"id": "s2-gunes", "tarih": "2026-12-08", "hikaye_sn": 8.49},
+ {"id": "s2-balik", "tarih": "2026-12-09", "hikaye_sn": 7.89},
+ {"id": "s2-kutuk", "tarih": "2026-12-10", "hikaye_sn": 7.69}
 ]

@@ -300,6 +300,263 @@
    "dosya": "videos/yunus.mp4",
    "kapak": "videos/yunus.jpg",
    "hikaye": "videos/story/yunus.mp4"
+  },
+  {
+   "id": "s2-yuzyil",
+   "seri": 2,
+   "baslik": "Yüz yıl sonra diriltilen adam",
+   "kanca": "Yüz yıl geçti, o ise bir gün sandı.",
+   "dosya": "videos/s2-yuzyil.mp4",
+   "kapak": "videos/s2-yuzyil.jpg",
+   "sure": "49,9 sn",
+   "aciklama": "Bakara sûresinde bir adam yıkık bir şehre uğrar. Allah onu yüz yıl ölü bırakıp diriltir; o ise bir gün kaldığını sanır. Ayette adı geçmez.",
+   "etiketler": [
+    "#azbilinenmucizeler",
+    "#kuran",
+    "#dinibilgiler",
+    "#hikmetkandili"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Bakara 2:259",
+     "not": "Yıkık şehre uğrayan kişi, yüz yıl sonra diriltilmesi, yiyeceği ve eşeği."
+    }
+   ],
+   "kontrol": [
+    "Ayet metni Kur'an metniyle (dosyadan) alındı",
+    "Kesin olmayan / bildirilmeyen bilgi videoda belirtildi",
+    "Peygamberlerin yüzü gösterilmedi",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "hikaye": "videos/story/s2-yuzyil.mp4"
+  },
+  {
+   "id": "s2-bulut",
+   "seri": 2,
+   "baslik": "Buluttan duyulan isim",
+   "kanca": "Bir bulutun içinden bir adamın adı duyuldu.",
+   "dosya": "videos/s2-bulut.mp4",
+   "kapak": "videos/s2-bulut.jpg",
+   "sure": "48,5 sn",
+   "aciklama": "Peygamber Efendimiz anlatır: Bir adam buluttan bir bahçe sahibinin adını duyar. O kişi ürününün üçte birini sadaka vermektedir. (Müslim 2984)",
+   "etiketler": [
+    "#azbilinenmucizeler",
+    "#hadis",
+    "#dinibilgiler",
+    "#hikmetkandili"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Müslim, Zühd 2984",
+     "not": "Buluttan “falancanın bahçesini sula” sesi; ürünün üçte biri sadaka."
+    }
+   ],
+   "kontrol": [
+    "Hadis sunnah.com üzerinden kontrol edildi (26 Kasım)",
+    "Kesin olmayan / bildirilmeyen bilgi videoda belirtildi",
+    "Peygamberlerin yüzü gösterilmedi",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "hikaye": "videos/story/s2-bulut.mp4"
+  },
+  {
+   "id": "s2-taht",
+   "seri": 2,
+   "baslik": "Göz açıp kapayıncaya kadar gelen taht",
+   "kanca": "Koca bir taht, göz açıp kapayıncaya kadar geldi.",
+   "dosya": "videos/s2-taht.mp4",
+   "kapak": "videos/s2-taht.jpg",
+   "sure": "49,8 sn",
+   "aciklama": "Neml sûresinde, yanında kitaptan bir ilim bulunan kişi tahtı göz açıp kapayıncaya kadar getirir. Adı ayette geçmez.",
+   "etiketler": [
+    "#azbilinenmucizeler",
+    "#kuran",
+    "#dinibilgiler",
+    "#hikmetkandili"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Neml 27:38",
+     "not": "Süleyman tahtı kimin getireceğini sorar."
+    },
+    {
+     "ref": "Neml 27:39",
+     "not": "Cinlerden bir ifritin teklifi."
+    },
+    {
+     "ref": "Neml 27:40",
+     "not": "Kitaptan ilmi olan kişi tahtı getirir."
+    }
+   ],
+   "kontrol": [
+    "Ayet metni Kur'an metniyle (dosyadan) alındı",
+    "Kesin olmayan / bildirilmeyen bilgi videoda belirtildi",
+    "Peygamberlerin yüzü gösterilmedi",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "hikaye": "videos/story/s2-taht.mp4"
+  },
+  {
+   "id": "s2-emanet",
+   "seri": 2,
+   "baslik": "Denize bırakılan bin altın",
+   "kanca": "Bir adam, bin altınlık borcunu denize bıraktı.",
+   "dosya": "videos/s2-emanet.mp4",
+   "kapak": "videos/s2-emanet.jpg",
+   "sure": "52,4 sn",
+   "aciklama": "Gemi bulamayan borçlu, bin altını bir kütüğe koyup Allah'a emanet ederek denize bırakır; kütük alacaklıya ulaşır. (Buhârî 2291)",
+   "etiketler": [
+    "#azbilinenmucizeler",
+    "#hadis",
+    "#dinibilgiler",
+    "#hikmetkandili"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Buhârî, Kefâlet 2291",
+     "not": "Bin dinar borç, oyulan kütük, “Allah senin yerine ödedi.”"
+    }
+   ],
+   "kontrol": [
+    "Hadis sunnah.com üzerinden kontrol edildi (26 Kasım)",
+    "Kesin olmayan / bildirilmeyen bilgi videoda belirtildi",
+    "Peygamberlerin yüzü gösterilmedi",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "hikaye": "videos/story/s2-emanet.mp4"
+  },
+  {
+   "id": "s2-binler",
+   "seri": 2,
+   "baslik": "Ölümden kaçan binlerce kişi",
+   "kanca": "Binlerce kişi ölümden kaçtı, ama kurtulamadı.",
+   "dosya": "videos/s2-binler.mp4",
+   "kapak": "videos/s2-binler.jpg",
+   "sure": "52,1 sn",
+   "aciklama": "Bakara 2:243'te binlerce kişi ölüm korkusuyla yurtlarından çıkar; Allah onları öldürür, sonra diriltir. Kim oldukları ayette bildirilmez.",
+   "etiketler": [
+    "#azbilinenmucizeler",
+    "#kuran",
+    "#dinibilgiler",
+    "#hikmetkandili"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Bakara 2:243",
+     "not": "Ölüm korkusuyla çıkanlar, ölmeleri ve diriltilmeleri."
+    }
+   ],
+   "kontrol": [
+    "Ayet metni Kur'an metniyle (dosyadan) alındı",
+    "Kesin olmayan / bildirilmeyen bilgi videoda belirtildi",
+    "Peygamberlerin yüzü gösterilmedi",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "hikaye": "videos/story/s2-binler.mp4"
+  },
+  {
+   "id": "s2-gunes",
+   "seri": 2,
+   "baslik": "Güneşin bekletildiği gün",
+   "kanca": "Bir peygamber güneşe seslendi.",
+   "dosya": "videos/s2-gunes.mp4",
+   "kapak": "videos/s2-gunes.jpg",
+   "sure": "47,0 sn",
+   "aciklama": "Peygamber Efendimiz, bir peygamberin duasıyla güneşin fetih tamamlanana kadar bekletildiğini haber verir. (Buhârî 3124, Müslim 1747)",
+   "etiketler": [
+    "#azbilinenmucizeler",
+    "#hadis",
+    "#dinibilgiler",
+    "#hikmetkandili"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Buhârî, Farzu'l-humus 3124",
+     "not": "Güneşin bekletilmesi için dua."
+    },
+    {
+     "ref": "Müslim, Cihad 1747",
+     "not": "Aynı hadisin rivayeti."
+    },
+    {
+     "ref": "Ahmed, Müsned 8315",
+     "not": "Bu peygamberin Yûşa olduğu rivayeti."
+    }
+   ],
+   "kontrol": [
+    "Hadis sunnah.com üzerinden kontrol edildi (26 Kasım)",
+    "Kesin olmayan / bildirilmeyen bilgi videoda belirtildi",
+    "Peygamberlerin yüzü gösterilmedi",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "hikaye": "videos/story/s2-gunes.mp4"
+  },
+  {
+   "id": "s2-balik",
+   "seri": 2,
+   "baslik": "Yolu gösteren balık",
+   "kanca": "Ölü bir balık, aranan kişinin yerini gösterdi.",
+   "dosya": "videos/s2-balik.mp4",
+   "kapak": "videos/s2-balik.jpg",
+   "sure": "52,7 sn",
+   "aciklama": "Hazreti Mûsâ'nın yolculuğunda azık sepetindeki balık canlanıp denize gider; aradığı kulun yeri orasıdır. (Kehf 18:60-64)",
+   "etiketler": [
+    "#azbilinenmucizeler",
+    "#kuran",
+    "#dinibilgiler",
+    "#hikmetkandili"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Kehf 18:60-64",
+     "not": "İki denizin birleştiği yer ve balığın denize gitmesi."
+    },
+    {
+     "ref": "Buhârî, Tefsîr 4725-4726",
+     "not": "Sepetteki balık, canlanması ve suyun tünel gibi kalması."
+    }
+   ],
+   "kontrol": [
+    "Ayet metni Kur'an metniyle (dosyadan) alındı",
+    "Hadis sunnah.com üzerinden kontrol edildi (26 Kasım)",
+    "Kesin olmayan / bildirilmeyen bilgi videoda belirtildi",
+    "Peygamberlerin yüzü gösterilmedi",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "hikaye": "videos/story/s2-balik.mp4"
+  },
+  {
+   "id": "s2-kutuk",
+   "seri": 2,
+   "baslik": "Ağlayan hurma kütüğü",
+   "kanca": "Kuru bir hurma kütüğü, çocuk gibi ağladı.",
+   "dosya": "videos/s2-kutuk.mp4",
+   "kapak": "videos/s2-kutuk.jpg",
+   "sure": "50,1 sn",
+   "aciklama": "Minber yapılınca, Peygamber Efendimizin yanında durduğu hurma kütüğü inlemeye başlar; Efendimiz onu teskin eder. (Buhârî 3584-3585)",
+   "etiketler": [
+    "#azbilinenmucizeler",
+    "#hadis",
+    "#dinibilgiler",
+    "#hikmetkandili"
+   ],
+   "kaynaklar": [
+    {
+     "ref": "Buhârî, Menâkıb 3584",
+     "not": "Kütüğün çocuk gibi ağlaması ve sebebi."
+    },
+    {
+     "ref": "Buhârî, Menâkıb 3585",
+     "not": "Sesin sahabilerce duyulması."
+    }
+   ],
+   "kontrol": [
+    "Hadis sunnah.com üzerinden kontrol edildi (26 Kasım)",
+    "Kesin olmayan / bildirilmeyen bilgi videoda belirtildi",
+    "Peygamberlerin yüzü gösterilmedi",
+    "Bilgili biri son kez izledi (yapılacak)"
+   ],
+   "hikaye": "videos/story/s2-kutuk.mp4"
   }
  ],
  "fikirler": [
@@ -327,9 +584,9 @@
    "not": "Kur'an'dan şaşırtıcı bilgiler, her videoda ayet kaynağı ekranda."
   },
   {
-   "ad": "2. Seri",
-   "durum": "Planlanacak",
-   "not": "Birinci seri bitince birlikte belirlenecek."
+   "ad": "2. Seri: Az Bilinen Mucizeler",
+   "durum": "Aktif",
+   "not": "Kur'an ve sahih hadislerden az bilinen olaylar; boyalı animasyon, kaynak ve kesinlik notu ekranda. 3-10 Aralık."
   },
   {
    "ad": "3. Seri",

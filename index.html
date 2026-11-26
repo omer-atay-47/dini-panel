@@ -94,7 +94,7 @@ function pct(v){const s=vs(v.id);return Math.round(100*s.kontrol.filter(Boolean)
 function ozet(){
   const V=DATA.videolar,c=d=>V.filter(v=>vs(v.id).durum===d).length;
   const avg=V.length?Math.round(V.reduce((a,v)=>a+pct(v),0)/V.length):0;
-  return `<h1>Özet</h1><div class="mu">${esc(DATA.seri)} serisi</div>
+  return `<h1>Özet</h1><div class="mu">${DATA.seriler.filter(s=>s.durum!=="Planlanacak").map(s=>esc(s.ad)).join(" · ")}</div>
   <div class="stats">
    <div class="stat"><b>${V.length}</b><span class="mu">Video</span></div>
    <div class="stat"><b>${c("taslak")}</b><span class="mu">Taslak</span></div>
@@ -102,7 +102,11 @@ function ozet(){
    <div class="stat"><b>${c("paylasildi")}</b><span class="mu">Paylaşıldı</span></div>
    <div class="stat"><b>%${avg}</b><span class="mu">Doğruluk kontrolü</span></div>
   </div>
-  <h2>Son videolar</h2>${grid(V)}`;
+  ${gruplu(V)}`;
+}
+function gruplu(V){
+  const nolar=[...new Set(V.map(v=>v.seri||1))].sort((a,b)=>b-a);
+  return nolar.map(n=>`<h2 style="margin-top:22px">${esc(DATA.seriler[n-1].ad)}</h2>${grid(V.filter(v=>(v.seri||1)===n))}`).join("");
 }
 function grid(V){
   return `<div class="grid">${V.map(v=>`<div class="card"><div class="thumb" style="background-image:url('${v.kapak}')" data-open="${v.id}"></div>
@@ -129,7 +133,7 @@ function detail(v){
    ${v.kaynaklar.map(k=>`<div class="src"><b>${esc(k.ref)}</b> <span class="mu">${esc(k.not)}</span></div>`).join("")}</div>`;
 }
 function dogruluk(){
-  return `<h1>Doğruluk</h1><p class="mu">Her videonun ayet kaynakları ve kontrol durumu. Yayından önce bilgili biri son kez izlemeli.</p>
+  return `<h1>Doğruluk</h1><p class="mu">Her videonun ayet ve hadis kaynakları ile kontrol durumu. Yayından önce bilgili biri son kez izlemeli.</p>
   ${DATA.videolar.map(v=>`<div class="card pad" style="margin-top:14px"><div class="row"><h2 style="margin:0">${esc(v.baslik)}</h2><span class="mu sm">%${pct(v)}</span></div>
   <div class="bar2" style="margin:8px 0"><i style="width:${pct(v)}%"></i></div>
   <table><tr><th>Kaynak</th><th>İçerik</th></tr>${v.kaynaklar.map(k=>`<tr><td><b>${esc(k.ref)}</b></td><td class="mu">${esc(k.not)}</td></tr>`).join("")}</table>
@@ -211,7 +215,7 @@ function render(){
   nav();
   const a=document.getElementById("app");
   if(view==="ozet")a.innerHTML=ozet();
-  else if(view==="videolar"){const v=DATA.videolar.find(x=>x.id===sel);a.innerHTML=v?detail(v):`<h1>Videolar</h1>${grid(DATA.videolar)}`}
+  else if(view==="videolar"){const v=DATA.videolar.find(x=>x.id===sel);a.innerHTML=v?detail(v):`<h1>Videolar</h1>${gruplu(DATA.videolar)}`}
   else if(view==="takvim")a.innerHTML=takvim();
   else if(view==="dogruluk")a.innerHTML=dogruluk();
   else if(view==="seri")a.innerHTML=seri();
